@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<data>
+    <record id="view_creator_field_form" model="ir.ui.view">
+        <field name="name">creator.model.field</field>
+        <field name="model">creator.field</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <form string="Field">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="type"/>
+                            <field name="required"/>
+                            <field name="readonly"/>
+                        </group>
+                        <group>
+                            <field name="default_boolean" attrs="{'invisible': [('type', '!=', 'bool')]}"/>
+                            <field name="default_int" attrs="{'invisible': [('type', '!=', 'int')]}"/>
+                            <field name="default_float" attrs="{'invisible': [('type', '!=', 'float')]}"/>
+                            <!--
+                            <field name="default_monetary" attrs="{'invisible': [('type', '!=', 'monetary')]}"/>
+                            -->
+                            <field name="default_char" attrs="{'invisible': [('type', '!=', 'char')]}"/>
+                            <field name="default_text" attrs="{'invisible': [('type', '!=', 'text')]}"/>
+                            <field name="default_html" attrs="{'invisible': [('type', '!=', 'html')]}"/>
+                            <field name="default_date_current" attrs="{'invisible': [('type', '!=', 'date')]}"/>
+                            <field name="default_date" attrs="{'invisible': ['|', ('type', '!=', 'date'), ('default_date_current', '=', True)]}"/>
+                            <field name="default_datetime_current" attrs="{'invisible': [('type', '!=', 'datetime')]}"/>
+                            <field name="default_datetime" attrs="{'invisible': ['|', ('type', '!=', 'datetime'), ('default_datetime_current', '=', True)]}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</data>
+</odoo>

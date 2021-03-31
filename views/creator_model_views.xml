@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<data>
+    <record id="view_creator_model_form" model="ir.ui.view">
+        <field name="name">creator.model.form</field>
+        <field name="model">creator.model</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <form string="Model">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Fields" name="Fields">
+                            <field name="field_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="type"/>
+                                    <field name="required"/>
+                                    <field name="readonly"/>
+                                    <field name="default_value"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</data>
+</odoo>

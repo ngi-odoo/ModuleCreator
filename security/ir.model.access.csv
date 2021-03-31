@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_creator_project,creator.project.user,model_creator_project,group_creator_user,1,1,1,1
+access_creator_model,creator.model.user,model_creator_model,group_creator_user,1,1,1,1
+access_creator_field,creator.field.user,model_creator_field,group_creator_user,1,1,1,1

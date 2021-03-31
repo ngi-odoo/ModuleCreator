@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<data>
+    <record id="view_creator_project_tree" model="ir.ui.view">
+        <field name="name">creator.project.tree</field>
+        <field name="model">creator.project</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <tree string="Projects">
+                <field name="name"/>
+                <field name="version"/>
+                <field name="user_ids"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_creator_project_form" model="ir.ui.view">
+        <field name="name">creator.project.form</field>
+        <field name="model">creator.project</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <form string="Project">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" class="oe_inline"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="version"/>
+                            <field name="manifest_category"/>
+                            <field name="manifest_website"/>
+                        </group>
+                        <group>
+                            <field name="user_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Summary" name="Summary">
+                            <field name="manifest_summary"/>
+                        </page>
+                        <page string="Description" name="Description">
+                            <field name="manifest_description"/>
+                        </page>
+                        <page string="Models" name="Models">
+                            <field name="model_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="field_ids"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Filter -->
+    <record id="view_creator_project_filter" model="ir.ui.view">
+        <field name="name">creator.project.filter</field>
+        <field name="model">creator.project</field>
+        <field name="arch" type="xml">
+            <search string="Search Project">
+                <field name="name" string="Project"/>
+                <field name="user_ids"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_creator_project_form_own" model="ir.actions.act_window">
+        <field name="name">Own Projects</field>
+        <field name="res_model">creator.project</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_creator_project_filter"/>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_creator_project_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_creator_project_form')}),
+        ]"/>
+        <field name="domain">[('user_ids', 'in', uid)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Project
+            </p>
+        </field>
+    </record>
+
+    <record id="action_creator_project_form" model="ir.actions.act_window">
+        <field name="name">All Projects</field>
+        <field name="res_model">creator.project</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_creator_project_filter"/>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_creator_project_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_creator_project_form')}),
+        ]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Project
+            </p>
+        </field>
+    </record>
+</data>
+</odoo>

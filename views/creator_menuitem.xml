@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem name="Module Creator"
+              id="menu_creator"
+              groups="group_creator_user">
+        <menuitem id="menu_creator_project" name="Projects" sequence="1">
+            <menuitem id="menu_creator_project_own" name="Projects - Own" action="action_creator_project_form_own" sequence="1"/>
+            <menuitem id="menu_creator_project_all" name="Projects - All" action="action_creator_project_form" sequence="2"/>
+        </menuitem>
+    </menuitem>
+</odoo>
